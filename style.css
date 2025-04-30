@@ -1,0 +1,209 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar - Using Flexbox */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(141, 96, 96);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Main Content - Using CSS Grid */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "hero hero hero"
+        "features features features"
+        "content content sidebar";
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    grid-area: hero;
+    background-color: #3498db;
+    color: rgb(12, 11, 9);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+}
+
+.features {
+    grid-area: features;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 1.5rem;
+    background-color: #f7f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.main-content {
+    background-color: #a39494;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ecf0f1;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Tablet View */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            "hero hero"
+            "features features"
+            "content sidebar";
+    }
+    
+    .features {
+        flex-direction: column;
+    }
+    
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 70px;
+        background-color: #2c3e50;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    
+    .nav-links.active {
+        transform: translateX(0);
+    }
+    
+    .nav-links li {
+        margin: 1rem 0;
+    }
+    
+    .burger {
+        display: block;
+    }
+}
+
+/* Mobile View */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-areas:
+            "hero"
+            "features"
+            "content"
+            "sidebar";
+    }
+    
+    .content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .navbar {
+        padding: 1rem;
+    }
+}
